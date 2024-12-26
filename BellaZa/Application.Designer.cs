@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Application));
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("default", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("pizza components", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("default", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("pizza components", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.radioM2 = new System.Windows.Forms.RadioButton();
@@ -98,6 +98,7 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.orderPage = new System.Windows.Forms.TabPage();
             this.collectionPage = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.deliveryPage = new System.Windows.Forms.TabPage();
             this.communityPage = new System.Windows.Forms.TabPage();
             this.promotionPage = new System.Windows.Forms.TabPage();
@@ -110,7 +111,6 @@
             this.statusCustomerLoyalty = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusOrders = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -141,6 +141,7 @@
             this.tabControl1.Size = new System.Drawing.Size(787, 705);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
@@ -974,13 +975,13 @@
             this.listPizzaComponents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            listViewGroup3.Header = "default";
-            listViewGroup3.Name = "default";
-            listViewGroup4.Header = "pizza components";
-            listViewGroup4.Name = "pizzaComponents";
+            listViewGroup1.Header = "default";
+            listViewGroup1.Name = "default";
+            listViewGroup2.Header = "pizza components";
+            listViewGroup2.Name = "pizzaComponents";
             this.listPizzaComponents.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup1,
+            listViewGroup2});
             this.listPizzaComponents.HideSelection = false;
             this.listPizzaComponents.Location = new System.Drawing.Point(207, 103);
             this.listPizzaComponents.Name = "listPizzaComponents";
@@ -1039,6 +1040,16 @@
             this.collectionPage.TabIndex = 1;
             this.collectionPage.Text = "my collection";
             this.collectionPage.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(34, 32);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(766, 705);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // deliveryPage
             // 
@@ -1190,16 +1201,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(99, 19);
             this.toolStripStatusLabel1.Text = "status : delivering";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(34, 32);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(766, 705);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // Application
             // 

@@ -116,11 +116,11 @@ namespace BellaZa
             public List<PizzaTopping> toppings = new List<PizzaTopping>();
 
             private Dictionary<PizzaSize, int> maxTopping = new Dictionary<PizzaSize, int>
-        {
-            { PizzaSize.mini, 2 },
-            { PizzaSize.large, 5 },
-            { PizzaSize.extraLarge, 6 }
-        };
+            {
+                { PizzaSize.mini, 2 },
+                { PizzaSize.large, 5 },
+                { PizzaSize.extraLarge, 6 }
+            };
 
             public PizzaBuilder setSize(PizzaSize size)
             {
@@ -176,26 +176,26 @@ namespace BellaZa
                 if (this.crust == PizzaCrust.none) return 0.0;
 
                 Dictionary<PizzaSize, Dictionary<PizzaCrust, double>> prices = new Dictionary<PizzaSize, Dictionary<PizzaCrust, double>>()
-            {
-                { PizzaSize.mini, new Dictionary<PizzaCrust, double> {
-                    { PizzaCrust.thin, 500 },
-                    { PizzaCrust.thick, 550 },
-                    { PizzaCrust.cauliflower, 650 },
-                    { PizzaCrust.sicilian, 600 }
-                }},
-                { PizzaSize.large, new Dictionary<PizzaCrust, double> {
-                    { PizzaCrust.thin, 1600 },
-                    { PizzaCrust.thick, 1700 },
-                    { PizzaCrust.cauliflower, 1900 },
-                    { PizzaCrust.sicilian, 1800 }
-                }},
-                { PizzaSize.extraLarge, new Dictionary<PizzaCrust, double> {
-                    { PizzaCrust.thin, 2000 },
-                    { PizzaCrust.thick, 2200 },
-                    { PizzaCrust.cauliflower, 2500 },
-                    { PizzaCrust.sicilian, 2400 }
-                }}
-            };
+                {
+                    { PizzaSize.mini, new Dictionary<PizzaCrust, double> {
+                        { PizzaCrust.thin, 500 },
+                        { PizzaCrust.thick, 550 },
+                        { PizzaCrust.cauliflower, 650 },
+                        { PizzaCrust.sicilian, 600 }
+                    }},
+                    { PizzaSize.large, new Dictionary<PizzaCrust, double> {
+                        { PizzaCrust.thin, 1600 },
+                        { PizzaCrust.thick, 1700 },
+                        { PizzaCrust.cauliflower, 1900 },
+                        { PizzaCrust.sicilian, 1800 }
+                    }},
+                    { PizzaSize.extraLarge, new Dictionary<PizzaCrust, double> {
+                        { PizzaCrust.thin, 2000 },
+                        { PizzaCrust.thick, 2200 },
+                        { PizzaCrust.cauliflower, 2500 },
+                        { PizzaCrust.sicilian, 2400 }
+                    }}
+                };
 
                 return prices[this.size][this.crust];
             }
@@ -205,20 +205,20 @@ namespace BellaZa
                 if (this.sauce == PizzaSauce.none) return 0.0;
 
                 Dictionary<PizzaSize, Dictionary<PizzaSauce, double>> prices = new Dictionary<PizzaSize, Dictionary<PizzaSauce, double>>()
-            {
-                { PizzaSize.mini, new Dictionary<PizzaSauce, double> {
-                    { PizzaSauce.tomato, 50 },
-                    { PizzaSauce.marinara, 70 }
-                }},
-                { PizzaSize.large, new Dictionary<PizzaSauce, double> {
-                    { PizzaSauce.tomato, 100 },
-                    { PizzaSauce.marinara, 120 }
-                }},
-                { PizzaSize.extraLarge, new Dictionary<PizzaSauce, double> {
-                    { PizzaSauce.tomato, 150 },
-                    { PizzaSauce.marinara, 180 }
-                }}
-            };
+                {
+                    { PizzaSize.mini, new Dictionary<PizzaSauce, double> {
+                        { PizzaSauce.tomato, 50 },
+                        { PizzaSauce.marinara, 70 }
+                    }},
+                    { PizzaSize.large, new Dictionary<PizzaSauce, double> {
+                        { PizzaSauce.tomato, 100 },
+                        { PizzaSauce.marinara, 120 }
+                    }},
+                    { PizzaSize.extraLarge, new Dictionary<PizzaSauce, double> {
+                        { PizzaSauce.tomato, 150 },
+                        { PizzaSauce.marinara, 180 }
+                    }}
+                };
 
                 return prices[this.size][this.sauce];
             }

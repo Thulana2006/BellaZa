@@ -62,6 +62,13 @@ namespace BellaZa
             checkT6.Tag = PizzaTopping.blackOlive;
 
             toppings = new List<PizzaTopping>();
+
+            tabPage7.Enabled = false; //2nd in ltr
+            tabPage2.Enabled = false;
+            tabPage3.Enabled = false;
+            tabPage4.Enabled = false;
+            tabPage5.Enabled = false;
+            tabPage6.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,32 +112,34 @@ namespace BellaZa
                 size = (PizzaSize)((RadioButton)sender).Tag;
 
             //Console.WriteLine(size.ToString());
+            tabPage2.Enabled = true;
         }
 
         private void crustChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
                 crust = (PizzaCrust)((RadioButton)sender).Tag;
-        
-            //Console.WriteLine(crust.ToString());
 
+            //Console.WriteLine(crust.ToString());
+            tabPage3.Enabled = true;
         }
 
         private void sauceChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
                 sauce = (PizzaSauce)((RadioButton)sender).Tag;
-        
-            //Console.WriteLine(sauce.ToString());
 
+            //Console.WriteLine(sauce.ToString());
+            tabPage4.Enabled = true;
         }
 
         private void cheeseChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
                 cheese = (PizzaCheese)((RadioButton)sender).Tag;
-        
+
             //Console.WriteLine(cheese.ToString());
+            tabPage5.Enabled = true;
         }
 
         private void toppingsChanged(object sender, EventArgs e)
@@ -139,6 +148,7 @@ namespace BellaZa
                 toppings.Add((PizzaTopping)((CheckBox)sender).Tag);
             if (((CheckBox)sender).CheckState == CheckState.Unchecked)
                 toppings.Remove((PizzaTopping)((CheckBox)sender).Tag);
+            tabPage6.Enabled = true;
         }
 
         private void tabPage6_Enter(object sender, EventArgs e)
@@ -215,6 +225,7 @@ namespace BellaZa
         private void modeChanged(object sender, EventArgs e)
         {
             mode = (PizzaMode)((RadioButton)sender).Tag;
+            tabPage7.Enabled = true;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -236,6 +247,12 @@ namespace BellaZa
             loadPizzaCollection();
 
             textPizzaName.Text = "";
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPageIndex < 0) return;
+            e.Cancel = !e.TabPage.Enabled;
         }
     }
 }
