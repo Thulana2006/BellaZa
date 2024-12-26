@@ -17,11 +17,11 @@ namespace BellaZa
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
 
-            Customer customer = new Customer();
+            UserProfile customer = new UserProfile();
             Properties.Settings.Default["User"] = customer;
             Properties.Settings.Default.Save();
 
-            System.Windows.Forms.Application.Run(new Startup());
+            System.Windows.Forms.Application.Run(new Application());
         }
     }
 }

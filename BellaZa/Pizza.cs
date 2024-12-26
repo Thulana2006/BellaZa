@@ -80,15 +80,15 @@ namespace BellaZa
             this.toppingsPrice = builder.getToppingPrice();
         }
 
-        public double crustPrice { get; }
+        public decimal crustPrice { get; }
 
-        public double saucePrice { get; }
+        public decimal saucePrice { get; }
 
-        public double cheesePrice { get; }
+        public decimal cheesePrice { get; }
 
-        public double toppingsPrice { get; }
+        public decimal toppingsPrice { get; }
 
-        public double getPrice()
+        public decimal getPrice()
         {
             return crustPrice + saucePrice + cheesePrice + toppingsPrice;
         }
@@ -96,7 +96,8 @@ namespace BellaZa
         public string getDescription()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(size.ToString() + " pizza")
+            sb.AppendLine("-----" + this.name + "-----")
+                .AppendLine(size.ToString() + " pizza")
                 .AppendLine("with a " + crust.ToString() + " crust")
                 .AppendLine("with " + sauce.ToString() + " sauce")
                 .AppendLine("with " + cheese.ToString() + " cheese")
@@ -171,25 +172,25 @@ namespace BellaZa
                 return new Pizza(this);
             }
 
-            public double getCrustPrice()
+            public decimal getCrustPrice()
             {
-                if (this.crust == PizzaCrust.none) return 0.0;
+                if (this.crust == PizzaCrust.none) return 0;
 
-                Dictionary<PizzaSize, Dictionary<PizzaCrust, double>> prices = new Dictionary<PizzaSize, Dictionary<PizzaCrust, double>>()
+                Dictionary<PizzaSize, Dictionary<PizzaCrust, decimal>> prices = new Dictionary<PizzaSize, Dictionary<PizzaCrust, decimal>>()
                 {
-                    { PizzaSize.mini, new Dictionary<PizzaCrust, double> {
+                    { PizzaSize.mini, new Dictionary<PizzaCrust, decimal> {
                         { PizzaCrust.thin, 500 },
                         { PizzaCrust.thick, 550 },
                         { PizzaCrust.cauliflower, 650 },
                         { PizzaCrust.sicilian, 600 }
                     }},
-                    { PizzaSize.large, new Dictionary<PizzaCrust, double> {
+                    { PizzaSize.large, new Dictionary<PizzaCrust, decimal> {
                         { PizzaCrust.thin, 1600 },
                         { PizzaCrust.thick, 1700 },
                         { PizzaCrust.cauliflower, 1900 },
                         { PizzaCrust.sicilian, 1800 }
                     }},
-                    { PizzaSize.extraLarge, new Dictionary<PizzaCrust, double> {
+                    { PizzaSize.extraLarge, new Dictionary<PizzaCrust, decimal> {
                         { PizzaCrust.thin, 2000 },
                         { PizzaCrust.thick, 2200 },
                         { PizzaCrust.cauliflower, 2500 },
@@ -200,21 +201,21 @@ namespace BellaZa
                 return prices[this.size][this.crust];
             }
 
-            public double getSaucePrice()
+            public decimal getSaucePrice()
             {
-                if (this.sauce == PizzaSauce.none) return 0.0;
+                if (this.sauce == PizzaSauce.none) return 0;
 
-                Dictionary<PizzaSize, Dictionary<PizzaSauce, double>> prices = new Dictionary<PizzaSize, Dictionary<PizzaSauce, double>>()
+                Dictionary<PizzaSize, Dictionary<PizzaSauce, decimal>> prices = new Dictionary<PizzaSize, Dictionary<PizzaSauce, decimal>>()
                 {
-                    { PizzaSize.mini, new Dictionary<PizzaSauce, double> {
+                    { PizzaSize.mini, new Dictionary<PizzaSauce, decimal> {
                         { PizzaSauce.tomato, 50 },
                         { PizzaSauce.marinara, 70 }
                     }},
-                    { PizzaSize.large, new Dictionary<PizzaSauce, double> {
+                    { PizzaSize.large, new Dictionary<PizzaSauce, decimal> {
                         { PizzaSauce.tomato, 100 },
                         { PizzaSauce.marinara, 120 }
                     }},
-                    { PizzaSize.extraLarge, new Dictionary<PizzaSauce, double> {
+                    { PizzaSize.extraLarge, new Dictionary<PizzaSauce, decimal> {
                         { PizzaSauce.tomato, 150 },
                         { PizzaSauce.marinara, 180 }
                     }}
@@ -223,48 +224,48 @@ namespace BellaZa
                 return prices[this.size][this.sauce];
             }
 
-            public double getCheesePrice()
+            public decimal getCheesePrice()
             {
-                if (this.cheese == PizzaCheese.none) return 0.0;
+                if (this.cheese == PizzaCheese.none) return 0;
 
-                Dictionary<PizzaSize, Dictionary<PizzaCheese, double>> prices = new Dictionary<PizzaSize, Dictionary<PizzaCheese, double>>()
-            {
-                { PizzaSize.mini, new Dictionary<PizzaCheese, double> {
-                    { PizzaCheese.mozarella, 100 },
-                    { PizzaCheese.parmessa, 120 },
-                    { PizzaCheese.provolone, 130 },
-                    { PizzaCheese.cheddar, 110 },
-                    { PizzaCheese.ricotto, 140 },
-                    { PizzaCheese.feta, 150 }
-                }},
-                { PizzaSize.large, new Dictionary<PizzaCheese, double> {
-                    { PizzaCheese.mozarella, 200 },
-                    { PizzaCheese.parmessa, 220 },
-                    { PizzaCheese.provolone, 230 },
-                    { PizzaCheese.cheddar, 210 },
-                    { PizzaCheese.ricotto, 240 },
-                    { PizzaCheese.feta, 250 }
-                }},
-                { PizzaSize.extraLarge, new Dictionary<PizzaCheese, double> {
-                    { PizzaCheese.mozarella, 300 },
-                    { PizzaCheese.parmessa, 320 },
-                    { PizzaCheese.provolone, 330 },
-                    { PizzaCheese.cheddar, 310 },
-                    { PizzaCheese.ricotto, 340 },
-                    { PizzaCheese.feta, 350 }
-                }}
-            };
+                Dictionary<PizzaSize, Dictionary<PizzaCheese, decimal>> prices = new Dictionary<PizzaSize, Dictionary<PizzaCheese, decimal>>()
+                {
+                    { PizzaSize.mini, new Dictionary<PizzaCheese, decimal> {
+                        { PizzaCheese.mozarella, 100 },
+                        { PizzaCheese.parmessa, 120 },
+                        { PizzaCheese.provolone, 130 },
+                        { PizzaCheese.cheddar, 110 },
+                        { PizzaCheese.ricotto, 140 },
+                        { PizzaCheese.feta, 150 }
+                    }},
+                    { PizzaSize.large, new Dictionary<PizzaCheese, decimal> {
+                        { PizzaCheese.mozarella, 200 },
+                        { PizzaCheese.parmessa, 220 },
+                        { PizzaCheese.provolone, 230 },
+                        { PizzaCheese.cheddar, 210 },
+                        { PizzaCheese.ricotto, 240 },
+                        { PizzaCheese.feta, 250 }
+                    }},
+                    { PizzaSize.extraLarge, new Dictionary<PizzaCheese, decimal> {
+                        { PizzaCheese.mozarella, 300 },
+                        { PizzaCheese.parmessa, 320 },
+                        { PizzaCheese.provolone, 330 },
+                        { PizzaCheese.cheddar, 310 },
+                        { PizzaCheese.ricotto, 340 },
+                        { PizzaCheese.feta, 350 }
+                    }}
+                };
 
                 return prices[this.size][this.cheese];
             }
 
-            public double getToppingPrice()
+            public decimal getToppingPrice()
             {
-                if (toppings.Count == 0) return 0.0;
+                if (toppings.Count == 0) return 0;
 
-                Dictionary<PizzaSize, Dictionary<PizzaTopping, double>> prices = new Dictionary<PizzaSize, Dictionary<PizzaTopping, double>>()
+                Dictionary<PizzaSize, Dictionary<PizzaTopping, decimal>> prices = new Dictionary<PizzaSize, Dictionary<PizzaTopping, decimal>>()
                 {
-                    { PizzaSize.mini, new Dictionary<PizzaTopping, double> {
+                    { PizzaSize.mini, new Dictionary<PizzaTopping, decimal> {
                         { PizzaTopping.pepperoni, 50 },
                         { PizzaTopping.mushrooms, 40 },
                         { PizzaTopping.sausage, 60 },
@@ -272,7 +273,7 @@ namespace BellaZa
                         { PizzaTopping.bacon, 70 },
                         { PizzaTopping.blackOlive, 35 }
                     }},
-                    { PizzaSize.large, new Dictionary<PizzaTopping, double> {
+                    { PizzaSize.large, new Dictionary<PizzaTopping, decimal> {
                         { PizzaTopping.pepperoni, 100 },
                         { PizzaTopping.mushrooms, 80 },
                         { PizzaTopping.sausage, 120 },
@@ -280,7 +281,7 @@ namespace BellaZa
                         { PizzaTopping.bacon, 140 },
                         { PizzaTopping.blackOlive, 70 }
                     }},
-                    { PizzaSize.extraLarge, new Dictionary<PizzaTopping, double> {
+                    { PizzaSize.extraLarge, new Dictionary<PizzaTopping, decimal> {
                         { PizzaTopping.pepperoni, 150 },
                         { PizzaTopping.mushrooms, 120 },
                         { PizzaTopping.sausage, 180 },
@@ -290,7 +291,7 @@ namespace BellaZa
                     }}
                 };
 
-                double price = 0.0;
+                decimal price = 0;
 
                 foreach (PizzaTopping topping in toppings)
                     price += prices[this.size][topping];

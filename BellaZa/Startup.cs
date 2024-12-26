@@ -26,8 +26,8 @@ namespace BellaZa
         {
             if(textL1.Text != "" && textL2.Text != "")
             {
-                Customer customer = (Customer)Properties.Settings.Default["User"];
-                if(customer.Name == textL1.Text && customer.checkPassword(textL2.Text))
+                UserProfile user = (UserProfile)Properties.Settings.Default["User"];
+                if(user.Name == textL1.Text && user.checkPassword(textL2.Text))
                 {
                     this.Hide();
                     Application application = new Application();
@@ -41,8 +41,8 @@ namespace BellaZa
         {
             if (textR2.Text == textR3.Text && textR2.Text != "" && textR1.Text != "")
             {
-                Customer customer = new Customer(textR1.Text, textR2.Text);
-                Properties.Settings.Default["User"] = customer;
+                UserProfile user = new UserProfile(textR1.Text, textR2.Text);
+                Properties.Settings.Default["User"] = user;
                 Properties.Settings.Default.Save();
             }
         }

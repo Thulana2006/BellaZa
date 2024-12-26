@@ -26,9 +26,9 @@ namespace BellaZa.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("new Customer()")]
-        public global::BellaZa.Customer User {
+        public global::BellaZa.UserProfile User {
             get {
-                return ((global::BellaZa.Customer)(this["User"]));
+                return ((global::BellaZa.UserProfile)(this["User"]));
             }
             set {
                 this["User"] = value;

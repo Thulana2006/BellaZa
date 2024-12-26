@@ -33,6 +33,10 @@
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("pizza components", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.labelDeliveryCharge = new System.Windows.Forms.Label();
+            this.labelDuration = new System.Windows.Forms.Label();
+            this.labelDistance = new System.Windows.Forms.Label();
+            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.radioM2 = new System.Windows.Forms.RadioButton();
             this.radioM1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -111,6 +115,9 @@
             this.statusCustomerLoyalty = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusOrders = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBarOrderCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusLoyaltyCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusCurrentState = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -145,6 +152,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.labelDeliveryCharge);
+            this.tabPage1.Controls.Add(this.labelDuration);
+            this.tabPage1.Controls.Add(this.labelDistance);
+            this.tabPage1.Controls.Add(this.gMapControl1);
             this.tabPage1.Controls.Add(this.radioM2);
             this.tabPage1.Controls.Add(this.radioM1);
             this.tabPage1.Controls.Add(this.label2);
@@ -156,6 +167,64 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "01. Select mode";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // labelDeliveryCharge
+            // 
+            this.labelDeliveryCharge.AutoSize = true;
+            this.labelDeliveryCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDeliveryCharge.ForeColor = System.Drawing.Color.Black;
+            this.labelDeliveryCharge.Location = new System.Drawing.Point(502, 619);
+            this.labelDeliveryCharge.Name = "labelDeliveryCharge";
+            this.labelDeliveryCharge.Size = new System.Drawing.Size(0, 29);
+            this.labelDeliveryCharge.TabIndex = 14;
+            // 
+            // labelDuration
+            // 
+            this.labelDuration.AutoSize = true;
+            this.labelDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDuration.ForeColor = System.Drawing.Color.Black;
+            this.labelDuration.Location = new System.Drawing.Point(502, 476);
+            this.labelDuration.Name = "labelDuration";
+            this.labelDuration.Size = new System.Drawing.Size(0, 29);
+            this.labelDuration.TabIndex = 14;
+            // 
+            // labelDistance
+            // 
+            this.labelDistance.AutoSize = true;
+            this.labelDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDistance.ForeColor = System.Drawing.Color.Black;
+            this.labelDistance.Location = new System.Drawing.Point(502, 524);
+            this.labelDistance.Name = "labelDistance";
+            this.labelDistance.Size = new System.Drawing.Size(0, 29);
+            this.labelDistance.TabIndex = 14;
+            // 
+            // gMapControl1
+            // 
+            this.gMapControl1.Bearing = 0F;
+            this.gMapControl1.CanDragMap = true;
+            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl1.GrayScaleMode = false;
+            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl1.LevelsKeepInMemory = 5;
+            this.gMapControl1.Location = new System.Drawing.Point(46, 345);
+            this.gMapControl1.MarkersEnabled = true;
+            this.gMapControl1.MaxZoom = 2;
+            this.gMapControl1.MinZoom = 2;
+            this.gMapControl1.MouseWheelZoomEnabled = true;
+            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl1.Name = "gMapControl1";
+            this.gMapControl1.NegativeMode = false;
+            this.gMapControl1.PolygonsEnabled = true;
+            this.gMapControl1.RetryLoadTile = 0;
+            this.gMapControl1.RoutesEnabled = true;
+            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl1.ShowTileGridLines = false;
+            this.gMapControl1.Size = new System.Drawing.Size(419, 312);
+            this.gMapControl1.TabIndex = 13;
+            this.gMapControl1.Zoom = 0D;
+            this.gMapControl1.OnMapClick += new GMap.NET.WindowsForms.MapClick(this.gMapControl1_OnMapClick);
             // 
             // radioM2
             // 
@@ -165,7 +234,7 @@
             this.radioM2.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.radioM2.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.radioM2.FlatAppearance.BorderSize = 0;
-            this.radioM2.Location = new System.Drawing.Point(435, 123);
+            this.radioM2.Location = new System.Drawing.Point(435, 46);
             this.radioM2.Name = "radioM2";
             this.radioM2.Size = new System.Drawing.Size(232, 234);
             this.radioM2.TabIndex = 12;
@@ -184,7 +253,7 @@
             this.radioM1.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.radioM1.FlatAppearance.BorderSize = 0;
             this.radioM1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Blue;
-            this.radioM1.Location = new System.Drawing.Point(133, 123);
+            this.radioM1.Location = new System.Drawing.Point(133, 46);
             this.radioM1.Name = "radioM1";
             this.radioM1.Size = new System.Drawing.Size(232, 234);
             this.radioM1.TabIndex = 11;
@@ -199,7 +268,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(524, 373);
+            this.label2.Location = new System.Drawing.Point(524, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 20);
             this.label2.TabIndex = 10;
@@ -210,7 +279,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(223, 373);
+            this.label1.Location = new System.Drawing.Point(223, 296);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 9;
@@ -943,9 +1012,10 @@
             this.pay2Checkout.Name = "pay2Checkout";
             this.pay2Checkout.Size = new System.Drawing.Size(88, 79);
             this.pay2Checkout.TabIndex = 1;
-            this.pay2Checkout.Tag = "2";
+            this.pay2Checkout.Tag = "2checkout";
             this.pay2Checkout.Text = "2checkout";
             this.pay2Checkout.UseVisualStyleBackColor = true;
+            this.pay2Checkout.Click += new System.EventHandler(this.PayButton_Click);
             // 
             // payStripe
             // 
@@ -954,9 +1024,10 @@
             this.payStripe.Name = "payStripe";
             this.payStripe.Size = new System.Drawing.Size(88, 79);
             this.payStripe.TabIndex = 1;
-            this.payStripe.Tag = "s";
+            this.payStripe.Tag = "stripe";
             this.payStripe.Text = "stripe";
             this.payStripe.UseVisualStyleBackColor = true;
+            this.payStripe.Click += new System.EventHandler(this.PayButton_Click);
             // 
             // payPaypal
             // 
@@ -965,9 +1036,10 @@
             this.payPaypal.Name = "payPaypal";
             this.payPaypal.Size = new System.Drawing.Size(88, 79);
             this.payPaypal.TabIndex = 1;
-            this.payPaypal.Tag = "p";
+            this.payPaypal.Tag = "paypal";
             this.payPaypal.Text = "paypal";
             this.payPaypal.UseVisualStyleBackColor = true;
+            this.payPaypal.Click += new System.EventHandler(this.PayButton_Click);
             // 
             // listPizzaComponents
             // 
@@ -1174,8 +1246,11 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusCustomerLoyalty,
+            this.statusLoyaltyCount,
             this.statusOrders,
-            this.toolStripStatusLabel1});
+            this.statusBarOrderCount,
+            this.toolStripStatusLabel1,
+            this.statusCurrentState});
             this.statusStrip1.Location = new System.Drawing.Point(0, 755);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1003, 24);
@@ -1184,23 +1259,43 @@
             // 
             // statusCustomerLoyalty
             // 
-            this.statusCustomerLoyalty.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.statusCustomerLoyalty.Name = "statusCustomerLoyalty";
-            this.statusCustomerLoyalty.Size = new System.Drawing.Size(126, 19);
-            this.statusCustomerLoyalty.Text = "customer loyalty : 300";
+            this.statusCustomerLoyalty.Size = new System.Drawing.Size(101, 19);
+            this.statusCustomerLoyalty.Text = "customer loyalty :";
             // 
             // statusOrders
             // 
-            this.statusOrders.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.statusOrders.Name = "statusOrders";
-            this.statusOrders.Size = new System.Drawing.Size(59, 19);
-            this.statusOrders.Text = "orders : 2";
+            this.statusOrders.Size = new System.Drawing.Size(46, 19);
+            this.statusOrders.Text = "orders :";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(99, 19);
-            this.toolStripStatusLabel1.Text = "status : delivering";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(44, 19);
+            this.toolStripStatusLabel1.Text = "status :";
+            // 
+            // statusBarOrderCount
+            // 
+            this.statusBarOrderCount.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.statusBarOrderCount.Name = "statusBarOrderCount";
+            this.statusBarOrderCount.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.statusBarOrderCount.Size = new System.Drawing.Size(21, 19);
+            this.statusBarOrderCount.Text = "2";
+            // 
+            // statusLoyaltyCount
+            // 
+            this.statusLoyaltyCount.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.statusLoyaltyCount.Name = "statusLoyaltyCount";
+            this.statusLoyaltyCount.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.statusLoyaltyCount.Size = new System.Drawing.Size(33, 19);
+            this.statusLoyaltyCount.Text = "300";
+            // 
+            // statusCurrentState
+            // 
+            this.statusCurrentState.Name = "statusCurrentState";
+            this.statusCurrentState.Size = new System.Drawing.Size(58, 19);
+            this.statusCurrentState.Text = "preparing";
             // 
             // Application
             // 
@@ -1216,7 +1311,7 @@
             this.Controls.Add(this.tabControl2);
             this.Name = "Application";
             this.Text = "BellaZa";
-            this.Load += new System.EventHandler(this.Customer_Load);
+            this.Load += new System.EventHandler(this.Application_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1325,5 +1420,12 @@
         private System.Windows.Forms.Label labelDiscount;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private GMap.NET.WindowsForms.GMapControl gMapControl1;
+        private System.Windows.Forms.Label labelDistance;
+        private System.Windows.Forms.Label labelDeliveryCharge;
+        private System.Windows.Forms.Label labelDuration;
+        private System.Windows.Forms.ToolStripStatusLabel statusLoyaltyCount;
+        private System.Windows.Forms.ToolStripStatusLabel statusBarOrderCount;
+        private System.Windows.Forms.ToolStripStatusLabel statusCurrentState;
     }
 }

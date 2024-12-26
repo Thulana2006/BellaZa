@@ -1,60 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BellaZa
 {
-    public class Customer
+    // Observer pattern interfaces
+    public interface IOrderObserver
     {
-        private List<Pizza> pizzacollection;
+        void Update(string orderStatus);
+    }
 
+    public class Customer : IOrderObserver
+    {
         public string Name { get; set; }
 
-        private string password;
-
-        public List<Pizza> pizzaCollection
+        public void Update(string orderStatus)
         {
-            get
-            {
-                return pizzacollection;
-            }
+            Console.WriteLine($"{Name} is notified: Order status - {orderStatus}");
+        }
+    }
 
-            set
-            {
-                pizzacollection = value;
-            }
+    // Subject (Order)
+    public class Order
+    {
+        private List<IOrderObserver> observers = new List<IOrderObserver>();
+        private string status;
+
+        public void Subscribe(IOrderObserver observer)
+        {
+            observers.Add(observer);
         }
 
-        private double loyaltyPercentage;
-
-        public double LoyaltyPercentage
+        public void Unsubscribe(IOrderObserver observer)
         {
-            get
+            observers.Remove(observer);
+        }
+
+        public void SetStatus(string status)
+        {
+            this.status = status;
+            Notify();
+        }
+
+        public void Notify()
+        {
+            foreach (var observer in observers)
             {
-                return loyaltyPercentage;
+                observer.Update(status);
             }
-            set
-            {
-                if (value <= 50.0)
-                    loyaltyPercentage = value;
-            }
-        }
-
-        public Customer()
-        {
-            this.Name = "default";
-            this.password = "default123";
-
-            pizzaCollection = new List<Pizza>();
-        }
-
-        public Customer(string name, string password)
-        {
-            this.Name = name;
-            this.password = password;
-        }
-
-        public bool checkPassword(string password)
-        {
-            return password == this.password;
         }
     }
 }
