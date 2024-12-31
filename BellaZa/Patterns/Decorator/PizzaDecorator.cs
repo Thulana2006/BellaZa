@@ -92,4 +92,26 @@ namespace BellaZa
             return basePrice + beveragePrice;
         }
     }
+
+    public class SeasonalSpecialDecorator : PizzaDecorator
+    {
+        public SeasonalSpecialDecorator(Pizza pizza) : base(pizza)
+        {
+
+        }
+
+        public override string ToString()
+        {
+            var baseDescription = base.ToString();
+            var packagingDescription = "Seasonal discount included";
+            return baseDescription + "\n" + packagingDescription;
+        }
+
+        public override decimal getPrice()
+        {
+            var basePrice = base.getPrice();
+            var seasonalDiscount = (decimal)0.15;
+            return basePrice * ((decimal)1.0 - seasonalDiscount);
+        }
+    }
 }

@@ -89,11 +89,11 @@
     </Compile>
     <Compile Include="configuration\PizzaMaxToppings.cs" />
     <Compile Include="configuration\PizzaPricing.cs" />
-    <Compile Include="Customer.cs" />
     <Compile Include="Patterns\Builder\PizzaBuilder.cs" />
+    <Compile Include="Patterns\Command\Command.cs" />
     <Compile Include="Patterns\Observer\PizzaOrder.cs" />
     <Compile Include="UserProfile.cs" />
-    <Compile Include="OrderPayment.cs" />
+    <Compile Include="Patterns\Strategy\OrderPayment.cs" />
     <Compile Include="Pizza.cs" />
     <Compile Include="Application.cs">
       <SubType>Form</SubType>
@@ -102,9 +102,9 @@
       <DependentUpon>Application.cs</DependentUpon>
     </Compile>
     <Compile Include="PizzaBilling.cs" />
-    <Compile Include="PizzaCustomization.cs" />
+    <Compile Include="Patterns\ChainOfResponsibility\PizzaCustomization.cs" />
     <Compile Include="Patterns\Decorator\PizzaDecorator.cs" />
-    <Compile Include="PizzaOrderState.cs" />
+    <Compile Include="Patterns\State\PizzaOrderState.cs" />
     <Compile Include="Startup.cs">
       <SubType>Form</SubType>
     </Compile>

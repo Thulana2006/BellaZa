@@ -23,7 +23,7 @@ namespace BellaZa
             Properties.Settings.Default["User"] = customer;
             Properties.Settings.Default.Save();
 
-            System.Windows.Forms.Application.Run(new Startup());
+            System.Windows.Forms.Application.Run(new Application());
         }
     }
 }

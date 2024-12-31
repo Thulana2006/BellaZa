@@ -30,6 +30,13 @@ namespace BellaZa
         sicilian
     }
 
+
+
+
+
+
+
+
     public enum PizzaSauce
     {
         none,
@@ -59,15 +66,21 @@ namespace BellaZa
         blackOlive
     }
 
+
+
+
     public class Pizza
     {
-        private PizzaSize size;
-        private PizzaCrust crust;
-        private PizzaSauce sauce;
-        private PizzaCheese cheese;
+        public PizzaSize size { get; }
+        
+        public PizzaCrust crust { get; }
+        
+        public PizzaSauce sauce { get; }
+
+        public PizzaCheese cheese { get; }
         
         public List<PizzaTopping> toppings { get; }
-        public string name { get; set; }
+        public string Name { get; set; }
 
         public Pizza() { }
 
@@ -84,6 +97,10 @@ namespace BellaZa
             this.saucePrice = PizzaPricing.getSaucePrice(this.sauce);
             this.cheesePrice = PizzaPricing.getCheesePrice(this.cheese);
             this.toppingsPrice = PizzaPricing.getToppingPrice(this.toppings);
+
+            //setting a default name by the size and cheese
+
+            this.Name = this.size.ToString() + this.cheese.ToString();
         }
 
         public decimal crustPrice { get; }
@@ -102,7 +119,7 @@ namespace BellaZa
         public string getDescription()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("-----" + this.name + "-----")
+            sb.AppendLine("-----" + this.Name + "-----")
                 .AppendLine(size.ToString() + " pizza")
                 .AppendLine("with a " + crust.ToString() + " crust")
                 .AppendLine("with " + sauce.ToString() + " sauce")

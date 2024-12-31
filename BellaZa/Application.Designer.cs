@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Application));
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("default", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("pizza components", System.Windows.Forms.HorizontalAlignment.Left);
@@ -102,8 +103,10 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.orderPage = new System.Windows.Forms.TabPage();
             this.collectionPage = new System.Windows.Forms.TabPage();
+            this.label22 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.deliveryPage = new System.Windows.Forms.TabPage();
+            this.ordersPanel = new System.Windows.Forms.Panel();
             this.communityPage = new System.Windows.Forms.TabPage();
             this.promotionPage = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
@@ -118,7 +121,7 @@
             this.statusBarOrderCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusCurrentState = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.realTimeOrderProcessor = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -169,7 +172,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "01. Select mode";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // labelDeliveryCharge
             // 
@@ -581,7 +583,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "05. Select cheese";
             this.tabPage4.UseVisualStyleBackColor = true;
-            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
             // radioCh6
             // 
@@ -1106,6 +1107,7 @@
             // 
             // collectionPage
             // 
+            this.collectionPage.Controls.Add(this.label22);
             this.collectionPage.Controls.Add(this.flowLayoutPanel1);
             this.collectionPage.Location = new System.Drawing.Point(4, 22);
             this.collectionPage.Name = "collectionPage";
@@ -1115,19 +1117,30 @@
             this.collectionPage.Text = "my collection";
             this.collectionPage.UseVisualStyleBackColor = true;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(34, 46);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(427, 39);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Please note that when reordering, by default it is set to pickup.\r\nIf you want th" +
+    "e delivery service, you have to go through the pizza ordering process again.\r\n\r\n" +
+    "";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(34, 32);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(34, 111);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(766, 705);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(766, 626);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // deliveryPage
             // 
-            this.deliveryPage.Controls.Add(this.panel1);
+            this.deliveryPage.Controls.Add(this.ordersPanel);
             this.deliveryPage.Location = new System.Drawing.Point(4, 22);
             this.deliveryPage.Name = "deliveryPage";
             this.deliveryPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1135,6 +1148,14 @@
             this.deliveryPage.TabIndex = 2;
             this.deliveryPage.Text = "pizza delivery";
             this.deliveryPage.UseVisualStyleBackColor = true;
+            // 
+            // ordersPanel
+            // 
+            this.ordersPanel.AutoScroll = true;
+            this.ordersPanel.Location = new System.Drawing.Point(43, 103);
+            this.ordersPanel.Name = "ordersPanel";
+            this.ordersPanel.Size = new System.Drawing.Size(740, 634);
+            this.ordersPanel.TabIndex = 0;
             // 
             // communityPage
             // 
@@ -1286,7 +1307,7 @@
             this.statusBarOrderCount.Name = "statusBarOrderCount";
             this.statusBarOrderCount.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.statusBarOrderCount.Size = new System.Drawing.Size(21, 19);
-            this.statusBarOrderCount.Text = "2";
+            this.statusBarOrderCount.Text = "0";
             // 
             // toolStripStatusLabel1
             // 
@@ -1300,12 +1321,10 @@
             this.statusCurrentState.Size = new System.Drawing.Size(58, 19);
             this.statusCurrentState.Text = "preparing";
             // 
-            // panel1
+            // realTimeOrderProcessor
             // 
-            this.panel1.Location = new System.Drawing.Point(43, 32);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(740, 705);
-            this.panel1.TabIndex = 0;
+            this.realTimeOrderProcessor.Interval = 3000;
+            this.realTimeOrderProcessor.Tick += new System.EventHandler(this.realTimeOrderProcessor_Tick);
             // 
             // Application
             // 
@@ -1341,6 +1360,7 @@
             this.tabControl2.ResumeLayout(false);
             this.orderPage.ResumeLayout(false);
             this.collectionPage.ResumeLayout(false);
+            this.collectionPage.PerformLayout();
             this.deliveryPage.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1438,6 +1458,8 @@
         private System.Windows.Forms.ToolStripStatusLabel statusLoyaltyCount;
         private System.Windows.Forms.ToolStripStatusLabel statusBarOrderCount;
         private System.Windows.Forms.ToolStripStatusLabel statusCurrentState;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel ordersPanel;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Timer realTimeOrderProcessor;
     }
 }

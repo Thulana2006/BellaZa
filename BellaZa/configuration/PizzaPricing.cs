@@ -115,24 +115,33 @@ namespace BellaZa.configuration
         public static decimal getCrustPrice(PizzaCrust crust, PizzaSize? size = null)
         {
             PizzaSize _size = size ?? Size;
+            
+            if (_size == PizzaSize.none) return 0;
             return CrustPrices[_size][crust];
         }
 
         public static decimal getSaucePrice(PizzaSauce sauce, PizzaSize? size = null)
         {
             PizzaSize _size = size ?? Size;
+
+            if (_size == PizzaSize.none) return 0;
             return SaucePrices[_size][sauce];
         }
 
         public static decimal getCheesePrice(PizzaCheese cheese, PizzaSize? size = null)
         {
             PizzaSize _size = size ?? Size;
+
+            if (_size == PizzaSize.none) return 0;
+
             return CheesePrices[_size][cheese];
         }
 
         public static decimal getToppingPrice(List<PizzaTopping> toppings, PizzaSize? size = null)
         {
             PizzaSize _size = size ?? Size;
+
+            if (_size == PizzaSize.none) return 0;
 
             decimal price = 0;
 
