@@ -81,7 +81,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\orderUIComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\orderUIComponent.Designer.cs">
+      <DependentUpon>orderUIComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="configuration\PizzaMaxToppings.cs" />
+    <Compile Include="configuration\PizzaPricing.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Patterns\Builder\PizzaBuilder.cs" />
+    <Compile Include="Patterns\Observer\PizzaOrder.cs" />
     <Compile Include="UserProfile.cs" />
     <Compile Include="OrderPayment.cs" />
     <Compile Include="Pizza.cs" />
@@ -93,7 +103,7 @@
     </Compile>
     <Compile Include="PizzaBilling.cs" />
     <Compile Include="PizzaCustomization.cs" />
-    <Compile Include="PizzaDecorator.cs" />
+    <Compile Include="Patterns\Decorator\PizzaDecorator.cs" />
     <Compile Include="PizzaOrderState.cs" />
     <Compile Include="Startup.cs">
       <SubType>Form</SubType>
@@ -105,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Application.resx">
       <DependentUpon>Application.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\orderUIComponent.resx">
+      <DependentUpon>orderUIComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Startup.resx">
       <DependentUpon>Startup.cs</DependentUpon>
@@ -138,6 +151,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

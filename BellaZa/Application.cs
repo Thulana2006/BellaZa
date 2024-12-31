@@ -1,4 +1,5 @@
-﻿using GMap.NET;
+﻿using BellaZa.Patterns.Builder;
+using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using Newtonsoft.Json.Linq;
@@ -45,7 +46,7 @@ namespace BellaZa
             customer = new Customer();
 
             user = (UserProfile)Properties.Settings.Default["User"];
-            user.pizzaCollection.Add(new Pizza.PizzaBuilder().setSize(PizzaSize.mini).addCrust(PizzaCrust.thin).addSauce(PizzaSauce.tomato).build());
+            user.pizzaCollection.Add(new PizzaBuilder().setSize(PizzaSize.mini).addCrust(PizzaCrust.thin).addSauce(PizzaSauce.tomato).build());
             loadPizzaCollection();
         }
 
@@ -254,7 +255,7 @@ namespace BellaZa
                 return;
             }    
 
-            Pizza newPizza = new Pizza.PizzaBuilder()
+            Pizza newPizza = new PizzaBuilder()
                 .setSize(size)
                 .addCrust(crust)
                 .addSauce(sauce)
@@ -349,7 +350,7 @@ namespace BellaZa
         {
             if (textPizzaName.Text == "") return;
 
-            Pizza newPizza = new Pizza.PizzaBuilder()
+            Pizza newPizza = new PizzaBuilder()
                 .setSize(size)
                 .addCrust(crust)
                 .addSauce(sauce)

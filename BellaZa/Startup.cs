@@ -24,16 +24,25 @@ namespace BellaZa
 
         private void buttonSignin_Click(object sender, EventArgs e)
         {
-            if(textL1.Text != "" && textL2.Text != "")
+            UserProfile user = (UserProfile)Properties.Settings.Default["User"];
+            
+            if(textL1.Text != "" && textL2.Text != "" && 
+                user.Name == textL1.Text && user.checkPassword(textL2.Text))
             {
-                UserProfile user = (UserProfile)Properties.Settings.Default["User"];
-                if(user.Name == textL1.Text && user.checkPassword(textL2.Text))
-                {
-                    this.Hide();
-                    Application application = new Application();
-                    application.Show();
-                }
+                this.Hide();
+                Application application = new Application();
+                application.Show();
+            }
+            else
+            {
+                string msgStr = "error occured";
 
+                if (textL1.Text == "") msgStr = "Please enter the username !";
+                if (textL2.Text == "") msgStr = "Please enter the password !";
+                else if (user.Name != textL1.Text) msgStr = "Username or password is incorrect !";
+                if (!user.checkPassword(textL2.Text)) msgStr = "Username or password is incorrect !";
+
+                MessageBox.Show(msgStr, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -41,9 +50,28 @@ namespace BellaZa
         {
             if (textR2.Text == textR3.Text && textR2.Text != "" && textR1.Text != "")
             {
-                UserProfile user = new UserProfile(textR1.Text, textR2.Text);
-                Properties.Settings.Default["User"] = user;
-                Properties.Settings.Default.Save();
+                try
+                {
+                    UserProfile user = new UserProfile(textR1.Text, textR2.Text);
+                    Properties.Settings.Default["User"] = user;
+                    Properties.Settings.Default.Save();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            else
+            {
+                string msgStr = "error occured";
+
+                if (textR2.Text == "") msgStr = "Please provide a password !";
+                else if (textR1.Text == "") msgStr = "Please provide a name !";
+                else if (textR3.Text == "") msgStr = "Please confirm the password !";
+                else if (textR2.Text != textR3.Text) msgStr = "Passwords do not match !";
+
+                MessageBox.Show(msgStr, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

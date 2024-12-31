@@ -39,21 +39,23 @@ namespace BellaZa
 
     public class OrderContext
     {
-        private PizzaOrderState state;
+        private PizzaOrderState _state;
+        private PizzaMode _mode;
 
-        public OrderContext(PizzaOrderState state)
+        public OrderContext(PizzaOrderState state, PizzaMode mode)
         {
-            this.state = state;
+            this._state = state;
+            this._mode = mode;
         }
 
         public void SetState(PizzaOrderState state)
         {
-            this.state = state;
+            this._state = state;
         }
 
-        public void Request()
+        public void Next()
         {
-            state.Handle(this);
+            _state.Handle(this);
         }
     }
 }

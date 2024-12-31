@@ -113,11 +113,12 @@
             this.button5 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusCustomerLoyalty = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusOrders = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusBarOrderCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLoyaltyCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusOrders = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBarOrderCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusCurrentState = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -130,6 +131,7 @@
             this.tabControl2.SuspendLayout();
             this.orderPage.SuspendLayout();
             this.collectionPage.SuspendLayout();
+            this.deliveryPage.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1125,6 +1127,7 @@
             // 
             // deliveryPage
             // 
+            this.deliveryPage.Controls.Add(this.panel1);
             this.deliveryPage.Location = new System.Drawing.Point(4, 22);
             this.deliveryPage.Name = "deliveryPage";
             this.deliveryPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1201,7 +1204,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 125);
             this.button3.TabIndex = 4;
-            this.button3.Text = "delivery";
+            this.button3.Text = "orders";
             this.button3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.button3.UseVisualStyleBackColor = false;
@@ -1263,17 +1266,19 @@
             this.statusCustomerLoyalty.Size = new System.Drawing.Size(101, 19);
             this.statusCustomerLoyalty.Text = "customer loyalty :";
             // 
+            // statusLoyaltyCount
+            // 
+            this.statusLoyaltyCount.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.statusLoyaltyCount.Name = "statusLoyaltyCount";
+            this.statusLoyaltyCount.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.statusLoyaltyCount.Size = new System.Drawing.Size(33, 19);
+            this.statusLoyaltyCount.Text = "300";
+            // 
             // statusOrders
             // 
             this.statusOrders.Name = "statusOrders";
             this.statusOrders.Size = new System.Drawing.Size(46, 19);
             this.statusOrders.Text = "orders :";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(44, 19);
-            this.toolStripStatusLabel1.Text = "status :";
             // 
             // statusBarOrderCount
             // 
@@ -1283,19 +1288,24 @@
             this.statusBarOrderCount.Size = new System.Drawing.Size(21, 19);
             this.statusBarOrderCount.Text = "2";
             // 
-            // statusLoyaltyCount
+            // toolStripStatusLabel1
             // 
-            this.statusLoyaltyCount.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.statusLoyaltyCount.Name = "statusLoyaltyCount";
-            this.statusLoyaltyCount.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.statusLoyaltyCount.Size = new System.Drawing.Size(33, 19);
-            this.statusLoyaltyCount.Text = "300";
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(44, 19);
+            this.toolStripStatusLabel1.Text = "status :";
             // 
             // statusCurrentState
             // 
             this.statusCurrentState.Name = "statusCurrentState";
             this.statusCurrentState.Size = new System.Drawing.Size(58, 19);
             this.statusCurrentState.Text = "preparing";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(43, 32);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(740, 705);
+            this.panel1.TabIndex = 0;
             // 
             // Application
             // 
@@ -1331,6 +1341,7 @@
             this.tabControl2.ResumeLayout(false);
             this.orderPage.ResumeLayout(false);
             this.collectionPage.ResumeLayout(false);
+            this.deliveryPage.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1427,5 +1438,6 @@
         private System.Windows.Forms.ToolStripStatusLabel statusLoyaltyCount;
         private System.Windows.Forms.ToolStripStatusLabel statusBarOrderCount;
         private System.Windows.Forms.ToolStripStatusLabel statusCurrentState;
+        private System.Windows.Forms.Panel panel1;
     }
 }

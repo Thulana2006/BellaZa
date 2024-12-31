@@ -50,6 +50,8 @@ namespace BellaZa
         {
             this.Name = name;
             this.password = password;
+
+            pizzaCollection = new List<Pizza>();
         }
 
         public bool checkPassword(string password)
